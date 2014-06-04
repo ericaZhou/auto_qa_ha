@@ -1,0 +1,156 @@
+<2014-05-20 13:48:32.962> ---------- ActionMySQL HA install ----------
+<2014-05-20 13:49:06.981> ---------- ActionMySQL HA ----------
+<2014-05-20 13:49:08.501> Waiting for http server start...
+<2014-05-20 13:49:08.526> Waiting other node be ready to join cluster
+<2014-05-20 13:49:08.687> Cluster is started with 2 node
+<2014-05-20 13:49:09.890> This node is slave
+<2014-05-20 13:50:21.661> Recovering target service...
+<2014-05-20 13:51:56.017> Recover target service done.
+<2014-05-20 13:51:56.022> Starting target service...
+<2014-05-20 13:51:56.201> Start target service done.
+<2014-05-20 13:51:56.203> Starting target service replication...
+<2014-05-20 13:51:56.275> Start target service replication done.
+<2014-05-20 13:51:56.445> Node is running
+<2014-05-20 13:52:48.911> Target service reports it is unavailable
+<2014-05-20 13:52:51.914> Unstable : Try restart target service
+<2014-05-20 13:52:57.171> Unstable : Restart target service failed with err=Fail to start mysql.
+<2014-05-20 13:52:58.206> This node is unavailable
+<2014-05-20 13:52:58.516> This node is slave
+<2014-05-20 13:52:58.671> Recovering target service...
+<2014-05-20 13:54:21.924> Recover target service done.
+<2014-05-20 13:54:21.926> Starting target service...
+<2014-05-20 13:54:22.097> Start target service done.
+<2014-05-20 13:54:22.099> Starting target service replication...
+<2014-05-20 13:54:22.385> Start target service replication done.
+<2014-05-20 13:54:23.121> Node is running
+<2014-05-20 13:55:09.575> ---------- ActionMySQL HA ----------
+<2014-05-20 13:55:09.679> Waiting for http server start...
+<2014-05-20 13:55:09.721> Waiting other node be ready to join cluster
+<2014-05-20 13:55:09.724> Cluster is started with 1 node
+<2014-05-20 13:55:12.053> This node is slave
+<2014-05-20 13:55:12.504> Master HA is offline, but master target service is available. Waiting for master HA back...
+<2014-05-20 13:55:17.885> ---------- ActionMySQL HA ----------
+<2014-05-20 13:55:17.983> Waiting for http server start...
+<2014-05-20 13:55:18.000> Waiting other node be ready to join cluster
+<2014-05-20 13:55:18.086> Cluster is started with 2 node
+<2014-05-20 13:55:22.306> This node is slave
+<2014-05-20 13:55:22.504> Recovering target service...
+<2014-05-20 13:55:24.785> Recover target service done.
+<2014-05-20 13:55:24.786> Starting target service...
+<2014-05-20 13:55:24.924> Start target service done.
+<2014-05-20 13:55:24.925> Starting target service replication...
+<2014-05-20 13:55:25.013> Start target service replication done.
+<2014-05-20 13:55:25.494> Node is running
+<2014-05-20 13:56:22.197> ---------- ActionMySQL HA ----------
+<2014-05-20 13:56:22.338> Waiting for http server start...
+<2014-05-20 13:56:22.361> Waiting other node be ready to join cluster
+<2014-05-20 13:56:22.539> Cluster is started with 2 node
+<2014-05-20 13:56:24.172> This node is slave
+<2014-05-20 13:56:25.642> Recovering target service...
+<2014-05-20 13:56:27.860> Recover target service done.
+<2014-05-20 13:56:27.861> Starting target service...
+<2014-05-20 13:56:28.010> Start target service done.
+<2014-05-20 13:56:28.012> Starting target service replication...
+<2014-05-20 13:56:28.082> Start target service replication done.
+<2014-05-20 13:56:28.528> Node is running
+<2014-05-20 13:57:12.959> ---------- ActionMySQL HA ----------
+<2014-05-20 13:57:13.112> Waiting for http server start...
+<2014-05-20 13:57:13.131> Waiting other node be ready to join cluster
+<2014-05-20 13:57:13.255> Cluster is started with 2 node
+<2014-05-20 13:57:28.919> This node is slave
+<2014-05-20 13:57:29.050> Recovering target service...
+<2014-05-20 13:57:31.313> Recover target service done.
+<2014-05-20 13:57:31.315> Starting target service...
+<2014-05-20 13:57:31.495> Start target service done.
+<2014-05-20 13:57:31.497> Starting target service replication...
+<2014-05-20 13:57:35.194> Start target service replication done.
+<2014-05-20 13:57:35.363> Node is running
+<2014-05-20 13:58:18.704> This node is force promoted by auto_qa
+<2014-05-20 13:58:18.957> Promoting target service...
+<2014-05-20 13:58:21.222> Promote target service done.
+<2014-05-20 13:58:21.224> This node is master
+<2014-05-20 13:58:21.227> Installing target service...
+<2014-05-20 13:58:21.432> Install target service done.
+<2014-05-20 13:58:23.504> Node is running
+<2014-05-20 13:58:25.541> Detect nodes are Master-Master
+<2014-05-20 13:58:25.797> Found master-master, and it could be auto fixed
+<2014-05-20 13:58:25.799> This node is slave
+<2014-05-20 13:58:28.744> Recovering target service...
+<2014-05-20 13:59:46.859> Recover target service done.
+<2014-05-20 13:59:46.860> Starting target service...
+<2014-05-20 13:59:47.003> Start target service done.
+<2014-05-20 13:59:47.005> Starting target service replication...
+<2014-05-20 13:59:47.241> Start target service replication done.
+<2014-05-20 13:59:47.469> Node is running
+<2014-05-20 14:00:37.855> This node is force promoted by auto_qa
+<2014-05-20 14:00:38.049> Promoting target service...
+<2014-05-20 14:00:39.263> Promote target service done.
+<2014-05-20 14:00:39.264> This node is master
+<2014-05-20 14:00:39.267> Installing target service...
+<2014-05-20 14:00:39.436> Install target service done.
+<2014-05-20 14:00:41.506> Node is running
+<2014-05-20 14:00:43.538> Detect nodes are Master-Master
+<2014-05-20 14:00:45.442> Found master-master, and it could be auto fixed
+<2014-05-20 14:00:45.444> This node is master
+<2014-05-20 14:00:45.446> Installing target service...
+<2014-05-20 14:00:45.645> Install target service done.
+<2014-05-20 14:00:47.707> Node is running
+<2014-05-20 14:50:14.303> Warning: The new connection to mysqld failed with error(driver: bad connection)
+<2014-05-20 14:50:16.367> Target service reports it is unavailable
+<2014-05-20 14:50:19.443> Unstable : Try restart target service
+<2014-05-20 14:50:25.722> Unstable : Restart target service failed with err=Fail to start mysql.
+<2014-05-20 14:50:26.749> This node is unavailable
+<2014-05-20 14:50:32.455> This node is slave
+<2014-05-20 14:50:32.630> Recovering target service...
+<2014-05-20 14:52:31.797> Recover target service done.
+<2014-05-20 14:52:31.798> Starting target service...
+<2014-05-20 14:52:31.979> Start target service done.
+<2014-05-20 14:52:31.980> Starting target service replication...
+<2014-05-20 14:52:32.057> Start target service replication done.
+<2014-05-20 14:52:32.298> Node is running
+<2014-05-20 14:56:44.072> Target service reports it is unavailable
+<2014-05-20 14:56:46.320> Unstable : Try restart target service
+<2014-05-20 14:56:53.620> Unstable : Restart target service failed with err=Fail to start mysql.
+<2014-05-20 14:56:54.645> This node is unavailable
+<2014-05-20 14:56:54.899> This node is slave
+<2014-05-20 14:56:55.074> Recovering target service...
+<2014-05-20 14:58:46.908> Recover target service done.
+<2014-05-20 14:58:46.910> Starting target service...
+<2014-05-20 14:58:47.083> Start target service done.
+<2014-05-20 14:58:47.084> Starting target service replication...
+<2014-05-20 14:58:47.199> Start target service replication done.
+<2014-05-20 14:58:47.385> Node is running
+<2014-05-20 15:04:08.766> Target service reports master-slave is unavailable
+<2014-05-20 15:04:08.775> Cause is "show slave status" return empty
+<2014-05-20 15:04:10.989> Unstable : Try restart target service
+<2014-05-20 15:04:17.430> Unstable : Try restart target service replication
+<2014-05-20 15:04:17.482> Unstable : Restart target service replication failed with err, Error 1200: The server is not configured as slave; fix in config file or with CHANGE MASTER TO
+<2014-05-20 15:04:18.508> This node is unavailable
+<2014-05-20 15:04:18.693> This node is slave
+<2014-05-20 15:04:18.825> Recovering target service...
+<2014-05-20 15:14:18.710> Recover target service done.
+<2014-05-20 15:14:18.712> Starting target service...
+<2014-05-20 15:14:18.921> Start target service done.
+<2014-05-20 15:14:18.923> Starting target service replication...
+<2014-05-20 15:14:18.957> Start target service replication done.
+<2014-05-20 15:14:19.189> Node is running
+<2014-05-20 15:17:58.146> Target service reports it is unavailable
+<2014-05-20 15:18:00.955> Unstable : Try restart target service
+<2014-05-20 15:18:06.243> Unstable : Restart target service failed with err=Fail to start mysql.
+<2014-05-20 15:18:07.297> This node is unavailable
+<2014-05-20 15:18:07.525> This node is slave
+<2014-05-20 15:18:07.688> Recovering target service...
+<2014-05-20 15:28:05.071> Recover target service done.
+<2014-05-20 15:28:05.073> Starting target service...
+<2014-05-20 15:28:05.234> Start target service done.
+<2014-05-20 15:28:05.236> Starting target service replication...
+<2014-05-20 15:28:05.302> Start target service replication done.
+<2014-05-20 15:28:05.527> Node is running
+<2014-05-20 15:33:15.954> Master is offline, start promotion
+<2014-05-20 15:33:39.760> Promoting target service...
+<2014-05-20 15:33:44.132> [TS] Tried to catch up with master binlog, but it's not done (Fail to dump and apply master binlog, err=Fail to get-binlog-files from master, err=cannot connect to [{10.186.18.53 5702}], retCode=-1, ret=), there may be some data loss
+<2014-05-20 15:33:44.302> Promote target service done.
+<2014-05-20 15:33:44.304> This node is master
+<2014-05-20 15:33:44.307> Installing target service...
+<2014-05-20 15:33:44.538> Install target service done.
+<2014-05-20 15:33:46.619> Node is running

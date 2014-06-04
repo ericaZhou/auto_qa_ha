@@ -1,0 +1,32 @@
+[os]
+os = windows
+version = 2003
+bit = 32
+
+[remote]
+a = 10.186.22.107
+b = 10.186.22.108
+sip = 10.186.22.222
+mysql_port = 3333
+time_weight = 3
+nic = Local Network
+
+[remote_path]
+ha_zip_file = c:\actionsky-ha.zip
+ha_dir = c:\actionsky-ha
+mysql_install = c:\mysql-install
+install_script = c:\actionsky-ha\bin\install.bat
+uninstall_script = c:\actionsky-ha\bin\uninstall.bat
+status_script = c:\actionsky-ha\bin\status.bat
+ha_log = c:\actionsky-ha\logs\ha.log
+trace_log = c:\actionsky-ha\logs\trace.log
+target_service_log = c:\actionsky-ha\logs\target_service.debug.log
+ha_config = c:\actionsky-ha\ha.config
+
+[remote_command]
+unzip_ha_installation = c:\7za.exe x -oc:\ c:\actionsky-ha.zip
+mysql = c:\mysql-install\bin\mysql.exe -uroot -proot -h127.0.0.1 -P3333
+
+[local_path]
+ha_config = ./107-108-windows2003-ha.config
+sysbench = ?

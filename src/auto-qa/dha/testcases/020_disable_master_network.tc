@@ -1,0 +1,21 @@
+prepare clean env
+
+var master slave
+
+set {master} log checkpoint
+set {slave} log checkpoint
+disable {master} network for 1min
+
+wait {slave} log "Master is offline, start promotion", timeout=1min
+wait {slave} log "Node is running", timeout=1min
+
+wait {master} network resume, timeout=2min
+wait {master} log "Recovering target service...", timeout=1min
+wait {master} log "Node is running", timeout=3min
+
+get status
+assert status all ok
+assert {slave} is master
+assert {master} is slave
+
+rollback:

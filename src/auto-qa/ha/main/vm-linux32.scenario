@@ -1,0 +1,32 @@
+[os]
+os = linux
+version = 2.6
+bit = 32
+
+[remote]
+a = 192.168.56.101
+b = 192.168.56.102
+sip = 192.168.56.222
+mysql_port = 3333
+time_weight = 1
+nic = eth1
+
+[remote_path]
+ha_zip_file = /home/vagrant/actionsky-ha.tar.gz
+ha_dir = /opt/actionsky-ha
+mysql_install = /home/ACTIONSKY-HA/mysql-install
+install_script = /opt/actionsky-ha/bin/install.sh
+uninstall_script = /opt/actionsky-ha/bin/uninstall.sh
+status_script = service haserver status
+ha_log = /opt/actionsky-ha/logs/ha.log
+trace_log = /opt/actionsky-ha/logs/trace.log
+target_service_log = /opt/actionsky-ha/logs/target_service.debug.log
+ha_config = /opt/actionsky-ha/ha.config
+
+[remote_command]
+unzip_ha_installation = cd /opt && tar zxvf /home/vagrant/actionsky-ha.tar.gz
+mysql = /home/ACTIONSKY-HA/mysql-install/bin/mysql -uroot -proot -h127.0.0.1 -P3333
+
+[local_path]
+ha_config = ./vm-linux32-ha.config
+sysbench = /usr/local/bin/sysbench

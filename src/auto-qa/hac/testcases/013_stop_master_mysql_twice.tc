@@ -1,0 +1,29 @@
+prepare clean env
+
+var master slave
+
+clean {master} unstable count
+
+# stop first time
+set {master} log checkpoint
+stop {master} mysql service
+wait {master} log "Target service reports it is unavailable", timeout=1min
+wait {master} log "Node is running", timeout=1min
+
+# stop second time
+set {master} log checkpoint
+set {slave} log checkpoint
+stop {master} mysql service
+wait {master} log "This node is unavailable, since it was unstable in last 300 seconds", timeout=1min
+
+wait {slave} log "Master is unavailable, start promotion", timeout=1min
+wait {slave} log "Node is running", timeout=1min
+
+wait {master} log "Node is running", timeout=3min
+
+get status
+assert status all ok
+assert {slave} is master
+assert {master} is slave
+
+rollback:

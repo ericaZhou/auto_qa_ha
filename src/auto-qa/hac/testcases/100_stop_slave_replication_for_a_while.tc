@@ -1,0 +1,30 @@
+#manually "stop slave", ha should always reconnect
+
+prepare clean env
+
+var master slave
+var sip
+
+clean {slave} unstable count
+sysbench prepare {sip} 100w data 
+wait {slave} mysql data catch up with {master}, timeout=3min
+
+set {slave} log checkpoint
+keep run {slave} mysql "stop slave;"
+wait {slave} log "Target service reports master-slave is unavailable", timeout=1min
+sleep 30s
+
+stop keep run
+
+wait {slave} log "Node is running", timeout=1min
+
+assert {slave} sysbench has 100w data
+
+get status
+assert status all ok
+assert {master} is master
+assert {slave} is slave
+
+rollback:
+drop {sip} sysbench data
+wait {slave} mysql data catch up with {master}, timeout=1min

@@ -1,0 +1,31 @@
+[os]
+os = windows
+version = 2003
+bit = 32
+
+[remote]
+a = 10.211.55.3
+b = 10.211.55.5
+sip = 10.211.55.222
+mysql_port = 3333
+time_weight = 1
+nic = eth0
+
+[remote_path]
+ha_zip_file = c:\actiontech_ha.zip
+ha_dir = c:\actiontech-ha
+mysql_install = c:\mysql-install
+install_script = c:\actiontech-ha\bin\haserver.exe install
+uninstall_script = c:\actiontech-ha\bin\haserver.exe uninstall
+status_script = c:\actiontech-ha\bin\haserver.exe status
+log_dir = c:\actiontech-ha\logs
+ha_config = c:\actiontech-ha\ha.config
+system_config = c:\actiontech-ha\conf\system.config
+
+[remote_command]
+unzip_ha_installation = c:\7za.exe x -oc:\ c:\actiontech_ha.zip
+mysql = c:\mysql-install\bin\mysql.exe -uroot -proot -h127.0.0.1 -P3333
+
+[local_path]
+ha_config = ./vm-windows32-ha.config
+sysbench = /usr/local/bin/sysbench

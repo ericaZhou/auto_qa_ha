@@ -1,0 +1,19 @@
+2014/05/20 09:58:31 2014-05-20 09:58:31.800636018 +0000 UTC> var A = 10.186.20.51
+2014/05/20 09:58:31 2014-05-20 09:58:31.801095997 +0000 UTC> var B = 10.186.20.52
+2014/05/20 09:58:31 2014-05-20 09:58:31.8052463 +0000 UTC> prepare clean env
+2014/05/20 09:58:52 2014-05-20 09:58:52.008596124 +0000 UTC> var master slave
+2014/05/20 09:58:53 err>> Found two slave, status was: 2014-05-20 17:58:57
+Global Status -- Running --- 10.186.18.222
+|
++-- 10.186.18.53(eth1)
++-- HA Service: Running
++-- MySQL Service: Running
++-- MySQL Replication: Running
++-- Role: Slave
+|
++-- 10.186.18.52(eth1) with SIP
++-- HA Service: Running
++-- MySQL Service: Running
++-- Role: Master
+
+2014/05/20 09:58:53 ROLLBACK:

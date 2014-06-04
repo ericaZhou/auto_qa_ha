@@ -1,0 +1,117 @@
+<2014-05-20 13:48:00.615> ---------- ActionMySQL HA install ----------
+<2014-05-20 13:48:32.806> ---------- ActionMySQL HA ----------
+<2014-05-20 13:48:33.088> Waiting for http server start...
+<2014-05-20 13:48:33.141> Waiting other node be ready to join cluster
+<2014-05-20 13:49:08.719> Cluster is started with 2 node
+<2014-05-20 13:49:12.422> This node is master
+<2014-05-20 13:49:12.424> Installing target service...
+<2014-05-20 13:50:21.301> Init db data from /opt/actiontech-ha/init_db_script.sql
+<2014-05-20 13:50:21.518> Init db data from /opt/actiontech-ha/init_db_script.sql done.
+<2014-05-20 13:50:21.641> Install target service done.
+<2014-05-20 13:50:23.715> Node is running
+<2014-05-20 13:55:17.817> ---------- ActionMySQL HA ----------
+<2014-05-20 13:55:17.924> Waiting for http server start...
+<2014-05-20 13:55:17.959> Waiting other node be ready to join cluster
+<2014-05-20 13:55:18.167> Cluster is started with 2 node
+<2014-05-20 13:55:19.853> This node is master
+<2014-05-20 13:55:19.856> Installing target service...
+<2014-05-20 13:55:20.104> Install target service done.
+<2014-05-20 13:55:22.169> Node is running
+<2014-05-20 13:56:11.727> ---------- ActionMySQL HA ----------
+<2014-05-20 13:56:11.817> Waiting for http server start...
+<2014-05-20 13:56:11.842> Waiting other node be ready to join cluster
+<2014-05-20 13:56:11.846> Cluster is started with 1 node
+<2014-05-20 13:56:14.898> This node is master
+<2014-05-20 13:56:14.901> Installing target service...
+<2014-05-20 13:56:15.096> Install target service done.
+<2014-05-20 13:56:17.173> Node is running
+<2014-05-20 13:56:22.076> ---------- ActionMySQL HA ----------
+<2014-05-20 13:56:22.186> Waiting for http server start...
+<2014-05-20 13:56:22.206> Waiting other node be ready to join cluster
+<2014-05-20 13:56:22.506> Cluster is started with 2 node
+<2014-05-20 13:56:25.215> This node is master
+<2014-05-20 13:56:25.217> Installing target service...
+<2014-05-20 13:56:25.422> Install target service done.
+<2014-05-20 13:56:27.484> Node is running
+<2014-05-20 13:58:24.402> Detect nodes are Master-Master
+<2014-05-20 13:58:28.517> Found master-master, and it could be auto fixed
+<2014-05-20 13:58:28.519> This node is master
+<2014-05-20 13:58:28.521> Installing target service...
+<2014-05-20 13:58:28.707> Install target service done.
+<2014-05-20 13:58:30.780> Node is running
+<2014-05-20 14:00:42.836> Detect nodes are Master-Master
+<2014-05-20 14:00:44.734> This node is locked to avoid data loss, the reason is "Found master-master, we resume latest master, and lock this one for manually data-fix", . To unlock this node, fix the data, remove ./node_lock file, and restart HA
+<2014-05-20 14:01:08.414> ---------- ActionMySQL HA ----------
+<2014-05-20 14:01:08.513> Waiting for http server start...
+<2014-05-20 14:01:08.539> Waiting other node be ready to join cluster
+<2014-05-20 14:01:08.880> Cluster is started with 2 node
+<2014-05-20 14:01:09.961> This node is slave
+<2014-05-20 14:01:10.139> Recovering target service...
+<2014-05-20 14:03:33.854> Recover target service done.
+<2014-05-20 14:03:33.858> Starting target service...
+<2014-05-20 14:03:33.983> Start target service done.
+<2014-05-20 14:03:33.984> Starting target service replication...
+<2014-05-20 14:03:34.211> Start target service replication done.
+<2014-05-20 14:03:34.659> Node is running
+<2014-05-20 14:13:27.064> Target service reports master-slave is unavailable
+<2014-05-20 14:13:27.066> Cause is Slave_SQL_Running=No,Last_SQL_Errno=0
+<2014-05-20 14:13:29.472> Unstable : Try restart target service
+<2014-05-20 14:13:35.796> Unstable : Try restart target service replication
+<2014-05-20 14:13:36.595> Unstable : Try restart failed, error was Start replication failed, lastErr is Slave_SQL_Running=No,Last_SQL_Errno=0. slave status was map[Last_Error: Seconds_Behind_Master: Last_SQL_Errno:0 Master_Retry_Count:86400 Slave_IO_Running:No Master_Info_File:mysql.slave_master_info Master_SSL_Verify_Server_Cert:No Master_UUID:f0b62db4-dfe3-11e3-b6cf-5e10e6a05cfb SQL_Delay:0 Master_SSL_Crlpath: Retrieved_Gtid_Set: Master_Host:10.186.18.52 Connect_Retry:60 Replicate_Do_DB: Replicate_Ignore_DB: Last_Errno:0 Exec_Master_Log_Pos:61035586 Master_SSL_Cipher: Last_SQL_Error_Timestamp: Master_SSL_Crl: Master_Port:3333 Master_Log_File:mysql-bin.000001 Replicate_Ignore_Table:mysql.ibbackup_binlog_marker Replicate_Wild_Ignore_Table:mysql.backup_% Master_Bind: Executed_Gtid_Set:f0b62db4-dfe3-11e3-b6cf-5e10e6a05cfb:8-112 Master_User:repl Read_Master_Log_Pos:61035586 Master_SSL_Cert: Slave_SQL_Running_State: Replicate_Do_Table: Until_Condition:None Last_IO_Errno:0 Replicate_Wild_Do_Table: Until_Log_Pos:0 Master_SSL_CA_File: Last_SQL_Error: Relay_Master_Log_File:mysql-bin.000001 Slave_SQL_Running:No Relay_Log_Space:61033332 Last_IO_Error: Skip_Counter:0 Master_Server_Id:771202000 SQL_Remaining_Delay: Auto_Position:0 Slave_IO_State: Until_Log_File: Master_SSL_CA_Path: Master_SSL_Key: Replicate_Ignore_Server_Ids: Last_IO_Error_Timestamp: Relay_Log_File:mysql-relay-bin.000003 Relay_Log_Pos:4 Master_SSL_Allowed:No], will retry
+<2014-05-20 14:13:38.649> Unstable : Try restart target service
+<2014-05-20 14:13:45.066> Unstable : Try restart target service replication
+<2014-05-20 14:13:45.127> Unstable : Try restart failed, error was Start replication failed. lastErr is Slave_SQL_Running=No,Last_SQL_Errno=0, slave status was map[Master_Log_File:mysql-bin.000001 Replicate_Do_Table: Master_Retry_Count:86400 Master_SSL_Crlpath: Relay_Log_Pos:4 Replicate_Do_DB: Replicate_Wild_Ignore_Table:mysql.backup_% Last_IO_Errno:2013 Master_SSL_Crl: Slave_SQL_Running:No Master_SSL_Allowed:No Last_IO_Error:error connecting to master 'repl@10.186.18.52:3333' - retry-time: 60  retries: 1 Last_IO_Error_Timestamp:140520 14:13:45 Master_Port:3333 Read_Master_Log_Pos:61035586 Relay_Log_Space:61033475 Master_SSL_Cipher: Master_UUID:f0b62db4-dfe3-11e3-b6cf-5e10e6a05cfb SQL_Delay:0 Last_Error: Until_Log_File: Last_SQL_Error_Timestamp: Auto_Position:0 Master_Host:10.186.18.52 Master_SSL_CA_File: Replicate_Ignore_Server_Ids: Replicate_Ignore_DB: Skip_Counter:0 Seconds_Behind_Master: Executed_Gtid_Set:f0b62db4-dfe3-11e3-b6cf-5e10e6a05cfb:8-112 Slave_IO_State: Last_Errno:0 Master_SSL_Cert: Last_SQL_Error: Slave_SQL_Running_State: Replicate_Wild_Do_Table: Until_Log_Pos:0 Master_SSL_Verify_Server_Cert:No Last_SQL_Errno:0 Master_Server_Id:0 SQL_Remaining_Delay: Until_Condition:None Master_SSL_CA_Path: Slave_IO_Running:No Exec_Master_Log_Pos:61035586 Master_Info_File:mysql.slave_master_info Master_SSL_Key: Connect_Retry:60 Relay_Log_File:mysql-relay-bin.000004 Relay_Master_Log_File:mysql-bin.000001 Replicate_Ignore_Table:mysql.ibbackup_binlog_marker Master_Bind: Master_User:repl Retrieved_Gtid_Set:], will retry
+<2014-05-20 14:13:47.211> Unstable : Try restart target service
+<2014-05-20 14:13:53.653> Unstable : Try restart target service replication
+<2014-05-20 14:13:53.717> Unstable : Try restart failed, error was Start replication failed, lastErr is Slave_SQL_Running=No,Last_SQL_Errno=0. slave status was map[Replicate_Wild_Do_Table: Last_IO_Error:error connecting to master 'repl@10.186.18.52:3333' - retry-time: 60  retries: 1 Master_SSL_Crl: Last_SQL_Errno:0 Replicate_Ignore_Server_Ids: SQL_Delay:0 Master_Bind: Executed_Gtid_Set:f0b62db4-dfe3-11e3-b6cf-5e10e6a05cfb:8-112 Master_SSL_Allowed:No Master_SSL_CA_Path: Auto_Position:0 Master_Port:3333 Exec_Master_Log_Pos:61035586 Until_Log_File: Master_SSL_Cert: Master_SSL_Verify_Server_Cert:No Replicate_Do_DB: Replicate_Ignore_DB: Replicate_Ignore_Table:mysql.ibbackup_binlog_marker Until_Condition:None Last_SQL_Error: Last_SQL_Error_Timestamp: Replicate_Do_Table: Skip_Counter:0 Master_Server_Id:0 Master_SSL_CA_File: Master_SSL_Key: Slave_SQL_Running_State: Master_User:repl Replicate_Wild_Ignore_Table:mysql.backup_% Master_SSL_Crlpath: Connect_Retry:60 Read_Master_Log_Pos:61035586 Seconds_Behind_Master: Last_IO_Error_Timestamp:140520 14:13:53 Relay_Log_Pos:4 Last_Errno:0 SQL_Remaining_Delay: Relay_Log_File:mysql-relay-bin.000005 Until_Log_Pos:0 Master_SSL_Cipher: Last_Error: Master_Log_File:mysql-bin.000001 Relay_Master_Log_File:mysql-bin.000001 Master_Info_File:mysql.slave_master_info Master_Host:10.186.18.52 Last_IO_Errno:2003 Master_UUID:f0b62db4-dfe3-11e3-b6cf-5e10e6a05cfb Master_Retry_Count:86400 Slave_IO_State: Slave_IO_Running:No Slave_SQL_Running:No Relay_Log_Space:61033618 Retrieved_Gtid_Set:], will retry
+<2014-05-20 14:13:55.774> Unstable : Try restart target service
+<2014-05-20 14:14:02.198> Unstable : Try restart target service replication
+<2014-05-20 14:14:04.246> Unstable : Restart target service succeed
+<2014-05-20 14:14:04.248> Node is running
+<2014-05-20 14:22:38.703> Target service reports it is unavailable
+<2014-05-20 14:22:41.490> Unstable : Try restart target service
+<2014-05-20 14:22:47.814> Unstable : Restart target service failed with err=Fail to start mysql.
+<2014-05-20 14:22:48.842> This node is unavailable
+<2014-05-20 14:22:49.219> This node is slave
+<2014-05-20 14:22:49.379> Recovering target service...
+<2014-05-20 14:24:44.629> Recover target service done.
+<2014-05-20 14:24:44.631> Starting target service...
+<2014-05-20 14:24:44.786> Start target service done.
+<2014-05-20 14:24:44.787> Starting target service replication...
+<2014-05-20 14:24:45.393> Start target service replication done.
+<2014-05-20 14:24:45.585> Node is running
+<2014-05-20 14:50:27.693> Master is unavailable, start promotion
+<2014-05-20 14:50:29.214> Promoting target service...
+<2014-05-20 14:50:29.733> [TS] Tried to catch up with master binlog, but it's not done (Fail to dump and apply master binlog, err=Fail to get-binlog-files from master, err=<nil>, retCode=1, ret=Fail to export binlog due to open /home/ACTIONTECH-HA/mysql-install/data: no such file or directory), there may be some data loss
+<2014-05-20 14:50:29.915> Promote target service done.
+<2014-05-20 14:50:29.917> This node is master
+<2014-05-20 14:50:29.934> Installing target service...
+<2014-05-20 14:50:30.126> Install target service done.
+<2014-05-20 14:50:32.211> Node is running
+<2014-05-20 15:32:55.344> [10.186.18.222] Master lose SIP, will rebind SIP
+<2014-05-20 15:32:55.393> Warning: The new connection to mysqld failed with error(dial tcp 10.186.18.53:3333: network is unreachable)
+<2014-05-20 15:33:06.437> Warning: The new connection to mysqld failed with error(dial tcp 10.186.18.53:3333: network is unreachable)
+<2014-05-20 15:33:07.642> Network is down, waiting for network back
+<2014-05-20 15:33:56.701> Network is resumed, waiting other node back for 120s
+<2014-05-20 15:33:56.722> This node is slave
+<2014-05-20 15:33:56.759> Recovering target service...
+<2014-05-20 16:13:04.921> Recover target service done.
+<2014-05-20 16:13:04.932> Starting target service...
+<2014-05-20 16:13:05.120> Start target service done.
+<2014-05-20 16:13:05.122> Starting target service replication...
+<2014-05-20 16:13:05.198> Start target service replication done.
+<2014-05-20 16:13:05.404> Node is running
+<2014-05-20 16:22:24.836> Target service reports master-slave is unavailable
+<2014-05-20 16:22:24.837> Cause is "show slave status" return empty
+<2014-05-20 16:22:26.992> Unstable : Try restart target service
+<2014-05-20 16:22:33.459> Unstable : Try restart target service replication
+<2014-05-20 16:22:33.486> Unstable : Restart target service replication failed with err, Error 1200: The server is not configured as slave; fix in config file or with CHANGE MASTER TO
+<2014-05-20 16:22:34.517> This node is unavailable
+<2014-05-20 16:22:34.764> This node is slave
+<2014-05-20 16:22:34.944> Recovering target service...
+<2014-05-20 17:44:10.584> Recover target service done.
+<2014-05-20 17:44:10.586> Starting target service...
+<2014-05-20 17:44:10.765> Start target service done.
+<2014-05-20 17:44:10.768> Starting target service replication...
+<2014-05-20 17:44:10.817> Start target service replication done.
+<2014-05-20 17:44:11.013> Node is running

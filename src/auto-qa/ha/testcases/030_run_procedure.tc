@@ -1,0 +1,58 @@
+bug #724
+===
+
+prepare clean env
+
+var sip
+
+run {sip} mysql `
+	use test;
+	CREATE TABLE test (
+	id int(10) NOT NULL AUTO_INCREMENT,
+	name varchar(20),
+	brithday date,
+	Email varchar(60),
+	mobile varchar(15),
+	IDcard varchar(20),
+	address varchar(50),
+	zipcode varchar(10),
+	age int(10),
+	Position varchar(25),
+	department varchar(25),
+	cloum varchar(50),
+	cloum2 varchar(50),
+	cloum3 varchar(50),
+	cloum4 varchar(50),
+	cloum5 varchar(50),
+	cloum6 varchar(50),
+	cloum7 varchar(50),
+	cloum8 varchar(50),
+	cloum9 varchar(50),
+	cloum10 varchar(50),
+	PRIMARY KEY (id)
+	);
+
+	delimiter /
+	create procedure sp_Insert(icount int)
+	BEGIN
+	declare i int;
+	set i =0;
+
+	while ( i <= icount) do
+
+	set @username = CONCAT('test', i);
+
+	INSERT INTO test.test(name,brithday,Email,mobile,IDcard,address,zipcode,age,position,department,cloum,cloum2,cloum3,cloum4,cloum5,cloum6,cloum7,cloum8,cloum9,cloum10) VALUES (@username,'1956/1/5','1234@qq.com','1300000000','31000000000000000000','1600AmphitheatreParkwayMountainView,CA94043USA','200237','24','Development','Develop','Thisbookwillteachyouhowtotestcomputersoftwareunder','Successfulconsumersoftwarecompanieshavelearnedhowt','Thisbookwillteachyouhowtotestcomputersoftwareunder','Successfulconsumersoftwarecompanieshavelearnedhowt','Thisbookwillteachyouhowtotestcomputersoftwareunder','Successfulconsumersoftwarecompanieshavelearnedhowt','Thisbookwillteachyouhowtotestcomputersoftwareunder','Successfulconsumersoftwarecompanieshavelearnedhowt','Thisbookwillteachyouhowtotestcomputersoftwareunder','Successfulconsumersoftwarecompanieshavelearnedhowt');
+
+	set i = i + 1;
+
+	end while ;
+	end; 
+/
+`
+run {sip} mysql "use test; call sp_Insert(100)"
+
+assert {sip} mysql "select count(1) from test.test" output is "101"
+
+rollback:
+run {sip} mysql "use test; drop table test; drop procedure sp_Insert;"

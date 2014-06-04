@@ -1,0 +1,36 @@
+bug #687
+===
+
+prepare clean env
+
+var master slave
+var sip
+
+set system config behavior.promote_limit_seconds = 0
+
+sysbench prepare {sip} 100w data 
+wait {slave} mysql data catch up with {master}, timeout=3min
+
+set {master} log checkpoint
+set {slave} log checkpoint
+
+disable {master} network for 1min
+
+wait {slave} log "Master is offline, start promotion", timeout=1min
+wait {slave} log "Node is running", timeout=1min
+
+wait {master} network resume, timeout=2min
+wait {master} log "Recovering target service...", timeout=1min
+wait {master} log "Node is running", timeout=6min
+
+#this would be blocked by commit lock
+run {slave} mysql "show slave status"
+
+get status
+assert status all ok
+assert {slave} is master
+assert {master} is slave
+
+rollback:
+drop {sip} sysbench data
+wait {master} mysql data catch up with {slave}, timeout=3min

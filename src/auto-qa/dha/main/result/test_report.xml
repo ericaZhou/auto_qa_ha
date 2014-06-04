@@ -1,0 +1,14 @@
+<testsuite tests="3">
+<testcase classname="default" name="012_stop_master_mysql" time="33">
+<failure type="CaseFail"/>
+<system-out>2014/05/20 09:57:26 2014-05-20 09:57:26.642826857 +0000 UTC&gt; var A = 10.186.20.51&#xA;2014/05/20 09:57:26 2014-05-20 09:57:26.643414014 +0000 UTC&gt; var B = 10.186.20.52&#xA;2014/05/20 09:57:26 2014-05-20 09:57:26.646685698 +0000 UTC&gt; prepare clean env&#xD;&#xA;2014/05/20 09:57:46 2014-05-20 09:57:46.916210793 +0000 UTC&gt; var master slave&#xD;&#xA;2014/05/20 09:57:48 err&gt;&gt; Found two slave, status was: 2014-05-20 17:57:52&#xA;Global Status -- Running --- 10.186.18.222&#xA;|&#xA;+-- 10.186.18.53(eth1)&#xA;+-- HA Service: Running&#xA;+-- MySQL Service: Running&#xA;+-- MySQL Replication: Running&#xA;+-- Role: Slave&#xA;|&#xA;+-- 10.186.18.52(eth1) with SIP&#xA;+-- HA Service: Running&#xA;+-- MySQL Service: Running&#xA;+-- Role: Master&#xA;&#xA;2014/05/20 09:57:48 ROLLBACK:&#xA;</system-out>
+</testcase>
+<testcase classname="default" name="013_stop_master_mysql_twice" time="31">
+<failure type="CaseFail"/>
+<system-out>2014/05/20 09:58:00 2014-05-20 09:58:00.063078672 +0000 UTC&gt; var A = 10.186.20.51&#xA;2014/05/20 09:58:00 2014-05-20 09:58:00.063908077 +0000 UTC&gt; var B = 10.186.20.52&#xA;2014/05/20 09:58:00 2014-05-20 09:58:00.099356047 +0000 UTC&gt; prepare clean env&#xD;&#xA;2014/05/20 09:58:20 2014-05-20 09:58:20.321014052 +0000 UTC&gt; var master slave&#xD;&#xA;2014/05/20 09:58:21 err&gt;&gt; Found two slave, status was: 2014-05-20 17:58:25&#xA;Global Status -- Running --- 10.186.18.222&#xA;|&#xA;+-- 10.186.18.53(eth1)&#xA;+-- HA Service: Running&#xA;+-- MySQL Service: Running&#xA;+-- MySQL Replication: Running&#xA;+-- Role: Slave&#xA;|&#xA;+-- 10.186.18.52(eth1) with SIP&#xA;+-- HA Service: Running&#xA;+-- MySQL Service: Running&#xA;+-- Role: Master&#xA;&#xA;2014/05/20 09:58:21 ROLLBACK:&#xA;</system-out>
+</testcase>
+<testcase classname="default" name="014_stop_slave_mysql" time="25">
+<failure type="CaseFail"/>
+<system-out>2014/05/20 09:58:31 2014-05-20 09:58:31.800636018 +0000 UTC&gt; var A = 10.186.20.51&#xA;2014/05/20 09:58:31 2014-05-20 09:58:31.801095997 +0000 UTC&gt; var B = 10.186.20.52&#xA;2014/05/20 09:58:31 2014-05-20 09:58:31.8052463 +0000 UTC&gt; prepare clean env&#xA;2014/05/20 09:58:52 2014-05-20 09:58:52.008596124 +0000 UTC&gt; var master slave&#xA;2014/05/20 09:58:53 err&gt;&gt; Found two slave, status was: 2014-05-20 17:58:57&#xA;Global Status -- Running --- 10.186.18.222&#xA;|&#xA;+-- 10.186.18.53(eth1)&#xA;+-- HA Service: Running&#xA;+-- MySQL Service: Running&#xA;+-- MySQL Replication: Running&#xA;+-- Role: Slave&#xA;|&#xA;+-- 10.186.18.52(eth1) with SIP&#xA;+-- HA Service: Running&#xA;+-- MySQL Service: Running&#xA;+-- Role: Master&#xA;&#xA;2014/05/20 09:58:53 ROLLBACK:&#xA;</system-out>
+</testcase>
+</testsuite>

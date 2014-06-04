@@ -1,0 +1,24 @@
+clean env on {A}
+clean env on {B}
+
+extract HA installation on {A}
+add {A} init-db-script "use test; create table test (a int); insert into test.test values(1); commit;"
+
+extract HA installation on {B}
+add {B} init-db-script "use test; create table test (a int); insert into test.test values(1); commit;"
+
+set {A} log checkpoint
+set {B} log checkpoint
+
+run HA install script on {A}
+run HA install script on {B}
+
+assert {A} log "Node is running", timeout=3min
+assert {B} log "Node is running", timeout=3min
+
+var master slave
+assert {master} mysql "select count(1) from test.test" output is "1"
+
+rollback:
+run {master} mysql "drop talbe test.test"
+wait {slave} mysql data catch up with {master}, timeout=1min

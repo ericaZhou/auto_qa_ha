@@ -1,0 +1,18 @@
+prepare clean env
+
+var master slave
+
+set {master} log checkpoint
+set {slave} log checkpoint
+disable {master} network for 3s
+
+wait {master} network resume, timeout=1min
+
+sleep 10s
+
+get status
+assert status all ok
+assert {master} is master
+assert {slave} is slave
+
+rollback:

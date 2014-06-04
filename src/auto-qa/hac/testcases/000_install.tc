@@ -1,0 +1,11 @@
+clean env on {A}
+clean env on {B}
+
+run {decider}
+install nodes
+
+assert {A} log "Node is running", timeout=3min
+assert {B} log "Node is running", timeout=3min
+
+assert {A} log "This node is master"
+assert {B} log "This node is slave"

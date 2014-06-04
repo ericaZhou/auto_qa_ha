@@ -1,0 +1,18 @@
+prepare clean env
+
+var master slave
+var sip
+var nic
+
+del {master} mysql backup
+del {slave} mysql backup
+
+#make slave recover from backup
+set {slave} log checkpoint
+del {slave} mysql folder and kill mysqld
+wait {slave} log "Target service reports it is unavailable", timeout=1min
+
+wait {slave} log "Start recover target service...", timeout=1min
+wait {slave} log "Node is running", timeout=6min
+
+rollback:

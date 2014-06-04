@@ -1,0 +1,25 @@
+prepare clean env
+
+var master slave
+var sip
+var nic
+
+get status
+
+assert status has "Global Status -- Running --- {sip}"
+
+assert status has `
+	+-- {master}({nic}) with SIP
+	+-- HA Service: Running
+	+-- MySQL Service: Running 
+`
+
+assert status has `
+	+-- {slave}({nic})
+    +-- HA Service: Running
+    +-- MySQL Service: Running
+    +-- MySQL Replication: Running
+`
+
+rollback:
+print status

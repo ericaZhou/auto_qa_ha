@@ -1,0 +1,12 @@
+run decider
+#set {decider} log checkpoint
+#
+#wait {decider} action "111", timeout=1min
+#
+#var nodes
+#
+#stop {pm} ha service
+#
+#set {pm} log checkpoint
+#start {pm} ha service
+#wait {pm} log "Node is running", timeout=2min

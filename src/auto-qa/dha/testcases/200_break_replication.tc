@@ -1,0 +1,30 @@
+prepare clean env
+
+var master slave
+var sip
+
+bg sysbench prepare {master} 100w data
+
+clean {slave} unstable count
+set {slave} log checkpoint
+
+keep run {slave} mysql "stop slave;"
+wait {slave} log "Target service reports master-slave is unavailable", timeout=1min
+wait {slave} log "Recovering target service...", timeout=1min
+stop keep run
+
+wait {slave} log "Node is running", timeout=3min
+wait bg
+wait {slave} mysql data catch up with {master}, timeout=3min
+
+assert {slave} sysbench has 100w data
+
+get status
+assert status all ok
+assert {master} is master
+assert {slave} is slave
+
+rollback:
+wait bg
+drop {sip} sysbench data
+wait {slave} mysql data catch up with {master}, timeout=1min

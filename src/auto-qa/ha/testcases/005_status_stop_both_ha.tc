@@ -1,0 +1,21 @@
+prepare clean env
+
+var master slave
+var sip
+
+stop {master} ha service
+stop {slave} ha service
+
+get status
+
+assert status has "Global Status -- Exception (No node found) --- {sip}"
+
+print status
+
+rollback:
+set {master} log checkpoint
+set {slave} log checkpoint
+start {master} ha service
+start {slave} ha service
+wait {master} log "Node is running", timeout=2min
+wait {slave} log "Node is running", timeout=2min

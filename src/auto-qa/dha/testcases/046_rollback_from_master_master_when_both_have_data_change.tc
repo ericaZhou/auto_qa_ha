@@ -1,0 +1,53 @@
+prepare clean env
+
+var master slave
+var sip
+var nic
+
+set {slave} log checkpoint
+set {master} log checkpoint
+
+#change master data after promotion
+run {master} mysql "create table test.a(a int);"
+
+pause {slave} master-master detection
+
+force promote {slave}
+wait {slave} log "Node is running", timeout=1min
+run {slave} mysql "create table test.b(b int);"
+
+cont {slave} master-master detection
+
+wait {master} log "Detect nodes are Master-Master", timeout=1min
+wait {slave} log "Detect nodes are Master-Master", timeout=1min
+
+wait {master} log "Found master-master, we resume latest master, and lock this one for manually data-fix", timeout=1min
+wait {slave} log "Found master-master, and it could be auto fixed", timeout=1min
+
+wait {master} log "This node is locked to avoid data loss.*", timeout=1min
+wait {slave} log "Node is running", timeout=3min
+
+#wait windows SIP change
+sleep 10s
+
+get status
+print status
+
+#assert {slave} is master #cannot use this because this will lock master, and have two masters
+assert status has `
+	+-- {slave}({nic}) with SIP
+    +-- HA Service: Running
+    +-- MySQL Service: Running
+    +-- Role: Master
+`
+
+rollback:
+run {master} mysql "drop table test.a;"
+run {slave} mysql "drop table test.b;"
+
+stop {master} ha service
+del {master} node_lock
+
+set {master} log checkpoint
+start {master} ha service
+wait {master} log "Node is running", timeout=3min

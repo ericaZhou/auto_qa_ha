@@ -1,0 +1,22 @@
+prepare clean env
+
+var master slave
+var sip
+
+set {slave} log checkpoint
+kill {master} ha service
+
+wait {slave} log "Master HA is offline, but master target service is available. Waiting for master HA back...", timeout=1min
+sleep 30s
+assert connect {sip} mysql should succeed
+
+set {master} log checkpoint
+start {master} ha service
+wait {master} log "Node is running", timeout=1min
+
+get status
+assert status all ok
+assert {master} is master
+assert {slave} is slave
+
+rollback:

@@ -1,0 +1,23 @@
+prepare clean env
+
+var master slave
+var sip
+var nic
+
+stop {master} ha service
+stop {slave} ha service
+
+set {master} log checkpoint
+set system config behavior.node_start_wait_other_node_join_seconds = 0
+start {master} ha service
+wait {master} log "Node is running", timeout=3min
+
+rollback:
+stop {master} ha service
+unset system config behavior.node_start_wait_other_node_join_seconds = 0
+set {master} log checkpoint
+set {slave} log checkpoint
+start {master} ha service
+start {slave} ha service
+wait {master} log "Node is running", timeout=3min
+wait {slave} log "Node is running", timeout=3min

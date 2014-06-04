@@ -1,0 +1,6 @@
+<testsuite tests="1">
+<testcase classname="default" name="300_run_decider" time="6">
+<failure type="CaseFail"/>
+<system-out>2014/06/03 05:54:42 2014-06-03 05:54:42.271884044 +0000 UTC&gt; var A = 192.168.56.101&#xA;2014/06/03 05:54:42 2014-06-03 05:54:42.27341215 +0000 UTC&gt; var B = 192.168.56.102&#xA;2014/06/03 05:54:42 2014-06-03 05:54:42.276032742 +0000 UTC&gt; set {decider} log checkpoint&#xD;&#xA;2014/06/03 05:54:42 2014-06-03 05:54:42.279317746 +0000 UTC&gt; wait {decider} action &#34;111&#34;, timeout=1min&#xD;&#xA;2014/06/03 05:54:42 2014-06-03 05:54:42.285700675 +0000 UTC&gt; var nodes&#xD;&#xA;2014/06/03 05:54:44 2014-06-03 05:54:44.418504301 +0000 UTC&gt; stop {pm} ha service&#xD;&#xA;2014/06/03 05:54:45 2014-06-03 05:54:45.093327086 +0000 UTC&gt; set {pm} log checkpoint&#xD;&#xA;2014/06/03 05:54:45 2014-06-03 05:54:45.096065906 +0000 UTC&gt; start {pm} ha service&#xD;&#xA;2014/06/03 05:54:45 2014-06-03 05:54:45.142497032 +0000 UTC&gt; wait {pm} log &#34;Node is running&#34;, timeout=2min&#xD;&#xA;2014/06/03 05:54:46 err&gt;&gt; No expect log &#34;Node is running&#34; found,&#xA;</system-out>
+</testcase>
+</testsuite>

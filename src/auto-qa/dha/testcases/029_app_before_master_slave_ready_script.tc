@@ -1,0 +1,13 @@
+prepare clean env
+
+enable app scripts
+
+var master slave
+var sip
+var nic
+
+assert {master} app before master ready script run
+assert {slave} app before slave ready script run
+
+rollback:
+disable app scripts

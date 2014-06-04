@@ -1,0 +1,35 @@
+slave should be locked if recovery failed, to avoid data loss
+lock should still work if restart HA
+===
+
+prepare clean env
+
+var master slave
+var sip
+var nic
+
+set {slave} log checkpoint
+
+set {slave} recovery fail
+keep run {slave} kill mysqld
+wait {slave} log "This node is locked to avoid data loss.*", timeout=1min
+get status
+assert status has `
+	+-- {slave}({nic})
+    +-- HA Service: LOCK
+`
+stop keep run
+
+#restart should keep node_lock effective
+kill {slave} ha service
+set {slave} log checkpoint
+start {slave} ha service
+wait {slave} log "This node is locked to avoid data loss.*", timeout=1min
+
+rollback:
+stop keep run
+unset {slave} recovery fail
+kill {slave} ha service
+del {slave} node_lock
+start {slave} ha service
+wait {slave} log "Node is running", timeout=3min

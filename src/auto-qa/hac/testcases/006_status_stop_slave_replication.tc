@@ -1,0 +1,30 @@
+prepare clean env
+
+var master slave
+var sip
+var nic
+
+stop {slave} ha service
+run {slave} mysql "stop slave;"
+
+get status
+
+assert status has "Global Status -- Exception (Slave HA is down) --- {sip}"
+
+assert status has `
+	+-- {master}({nic}) with SIP
+	+-- HA Service: Running
+	+-- MySQL Service: Running 
+`
+
+assert status has `
+	+-- {slave}({nic})
+    +-- HA Service: Stopped
+    +-- MySQL Service: Running
+    +-- MySQL Replication: Stopped
+`
+
+rollback:
+set {slave} log checkpoint
+start {slave} ha service
+wait {slave} log "Node is running", timeout=2min

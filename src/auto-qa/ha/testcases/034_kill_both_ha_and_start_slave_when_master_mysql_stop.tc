@@ -1,0 +1,20 @@
+prepare clean env
+
+var master slave
+var sip
+var nic
+
+set system config node_start_wait_other_node_join_seconds = 0
+
+kill {master} ha service
+kill {slave} ha service
+stop {master} mysql service
+set {slave} log checkpoint
+start {slave} ha service
+
+wait {slave} log "Node is running", timeout=3min
+
+rollback:
+set {master} log checkpoint
+start {master} ha service
+wait {master} log "Node is running", timeout=3min

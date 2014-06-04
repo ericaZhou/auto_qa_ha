@@ -1,0 +1,25 @@
+bug #744
+===
+prepare clean env
+
+var master slave
+var sip
+var nic
+
+stop {master} ha service
+stop {slave} ha service
+
+set {slave} log checkpoint
+set system config behavior.node_start_wait_other_node_join_seconds = 0
+start {slave} ha service
+wait {slave} log "Master HA is offline, but master target service is available. Waiting for master HA back...", timeout=3min
+
+rollback:
+stop {slave} ha service
+unset system config behavior.node_start_wait_other_node_join_seconds = 0
+set {master} log checkpoint
+set {slave} log checkpoint
+start {master} ha service
+start {slave} ha service
+wait {master} log "Node is running", timeout=3min
+wait {slave} log "Node is running", timeout=3min

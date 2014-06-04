@@ -1,0 +1,19 @@
+prepare clean env
+
+var master slave
+
+clean {slave} unstable count
+
+set {slave} log checkpoint
+
+del {slave} mysql data folder and kill mysqld
+wait {slave} log "Target service reports it is unavailable", timeout=1min
+wait {slave} log "Start recover target service...", timeout=1min
+wait {slave} log "Node is running", timeout=3min
+
+get status
+assert status all ok
+assert {master} is master
+assert {slave} is slave
+
+rollback:

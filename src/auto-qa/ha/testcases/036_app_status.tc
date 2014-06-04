@@ -1,0 +1,27 @@
+prepare clean env
+
+enable app scripts
+
+var master slave
+var sip
+var nic
+
+get status
+
+assert status has `
+	+-- {master}({nic}) with SIP
+	+-- HA Service: Running
+	+-- MySQL Service: Running 
+    +-- Extra App: started
+`
+
+assert status has `
+	+-- {slave}({nic})
+    +-- HA Service: Running
+    +-- MySQL Service: Running
+    +-- MySQL Replication: Running
+    +-- Extra App: started
+`
+
+rollback:
+disable app scripts

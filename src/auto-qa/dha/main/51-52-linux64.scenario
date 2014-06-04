@@ -1,0 +1,31 @@
+[os]
+os = linux
+version = 2.6
+bit = 64
+
+[remote]
+a = 10.186.20.51
+b = 10.186.20.52
+sip = 10.186.20.222
+mysql_port = 3333
+time_weight = 3
+nic = eth0
+
+[remote_path]
+ha_zip_file = /opt/actiontech_ha_linux_amd64.tar.gz
+ha_dir = /opt/actiontech-ha
+mysql_install = /home/ACTIONTECH-HA/mysql-install
+install_script = /opt/actiontech-ha/bin/haserver install
+uninstall_script = /opt/actiontech-ha/bin/haserver uninstall
+status_script = service haserver status
+log_dir = /opt/actiontech-ha/logs 
+ha_config = /opt/actiontech-ha/ha.config
+system_config = /opt/actiontech-ha/conf/system.config
+
+[remote_command]
+unzip_ha_installation = cd /opt && tar zxvf /opt/actiontech_ha_linux_amd64.tar.gz
+mysql = /home/ACTIONTECH-HA/mysql-install/bin/mysql -uroot -proot -h127.0.0.1 -P3333
+
+[local_path]
+ha_config = ./51-52-linux64-ha.config
+sysbench = /home/ci/sysbench-0.4.12/sysbench.sh

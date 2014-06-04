@@ -1,0 +1,21 @@
+#scenario
+
+the PC is very slow that TCP connections are timeout when deciding master/slave
+===
+prepare clean env
+
+var master slave
+var sip
+var nic
+
+break {slave} decider tcp
+stop {slave} ha service
+set {slave} log checkpoint
+start {slave} ha service
+wait {slave} log "remote node is pingable, but could not detect its HA availability by ssh, could not decide master/slave", timeout=3min
+sleep 10s
+assert {slave} no log "This node is decided as slave"
+
+rollback:
+recover {slave} decider tcp
+wait {slave} log "Node is running", timeout=3min

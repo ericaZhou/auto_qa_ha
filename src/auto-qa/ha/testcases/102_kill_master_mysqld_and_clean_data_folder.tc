@@ -1,0 +1,29 @@
+prepare clean env
+
+var master slave
+var sip
+
+sysbench prepare {sip} 100w data 
+
+set {master} log checkpoint
+set {slave} log checkpoint
+
+del {master} mysql data folder and kill mysqld
+wait {master} log "Target service reports it is unavailable", timeout=1min
+
+wait {slave} log "Master is unavailable, start promotion", timeout=1min
+wait {slave} log "Node is running", timeout=3min
+wait {master} log "Restart target service failed", timeout=3min
+wait {master} log "Node is running", timeout=6min
+
+wait {master} mysql data catch up with {slave}, timeout=1min
+assert {master} sysbench has 100w data
+
+get status
+assert status all ok
+assert {slave} is master
+assert {master} is slave
+
+rollback:
+drop {sip} sysbench data
+wait {master} mysql data catch up with {slave}, timeout=1min

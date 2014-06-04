@@ -1,0 +1,39 @@
+#pm means primary master,ps means primary slave,#sm means secondary master,ss means secondary slave
+[os]
+os = linux
+version = 2.6
+bit = 64
+
+[remote]
+a = 192.168.56.101
+b = 192.168.56.102
+c = 192.168.56.103
+d = 192.168.56.104
+
+decider=192.168.56.105
+p_sip = 192.168.56.222
+s_sip = 192.168.56.223
+mysql_port = 3306
+time_weight = 2
+nic = eth1
+
+[remote_path]
+ha_zip_file = /opt/actiontech_ha_linux_amd64.tar.gz
+ha_dir = /opt/actiontech-ha
+mysql_install = /home/ACTIONTECH-HA/mysql-install
+install_script = /opt/actiontech-ha/bin/haserver install
+uninstall_script = /opt/actiontech-ha/bin/haserver uninstall
+status_script = service haserver status hac
+log_dir = /opt/actiontech-ha/logs 
+ha_config = /opt/actiontech-ha/ha.config
+system_config = /opt/actiontech-ha/conf/system.config
+decider_log = /opt/actiontech-ha/conf/decider.config
+
+[remote_command]
+unzip_ha_installation = cd /opt && tar zxvf /opt/actiontech_ha_linux_amd64.tar.gz
+mysql = /home/ACTIONTECH-HA/mysql-install/bin/mysql -uroot -proot123 -h127.0.0.1 -P3306
+run_decider=nohup /opt/actiontech-ha/bin/hac_example_decider 4999 
+
+[local_path]
+ha_config = ./vm-linux64-ha.config
+sysbench = /usr/local/bin/sysbench

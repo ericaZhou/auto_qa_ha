@@ -1,0 +1,25 @@
+bug #689
+	make m-s replication break and cannot resume
+	slave should be recovered from backup
+===
+
+prepare clean env
+
+var master slave
+var sip
+
+run {sip} mysql "create database belle; create table belle.t1(id int,name varchar(20));"
+wait {slave} mysql data catch up with {master}, timeout=1min
+run {slave} mysql "drop database belle;"
+run {sip} mysql "insert into belle.t1 values(2,'cccc');"
+
+wait {slave} log "Target service reports master-slave is unavailable", timeout=1min
+wait {slave} log "Start recover target service...", timeout=1min
+wait {slave} log "Node is running", timeout=3min
+
+wait {slave} mysql data catch up with {master}, timeout=4min
+assert {slave} mysql "select count(1) from belle.t1" output is "1"
+
+rollback:
+run {master} mysql "drop database belle"
+wait {slave} mysql data catch up with {master}, timeout=1min

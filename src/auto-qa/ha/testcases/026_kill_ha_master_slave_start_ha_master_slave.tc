@@ -1,0 +1,25 @@
+prepare clean env
+
+var master slave
+var sip
+
+kill {master} ha service
+sleep 10s
+kill {slave} ha service
+sleep 10s
+
+set {master} log checkpoint
+set {slave} log checkpoint
+start {master} ha service
+sleep 10s
+start {slave} ha service
+
+wait {master} log "Node is running", timeout=1min
+wait {slave} log "Node is running", timeout=1min
+
+get status
+assert status all ok
+assert {master} is master
+assert {slave} is slave
+
+rollback:

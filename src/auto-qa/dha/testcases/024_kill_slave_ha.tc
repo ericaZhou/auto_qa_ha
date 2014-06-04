@@ -1,0 +1,21 @@
+prepare clean env
+
+var master slave
+var sip
+
+kill {slave} ha service
+
+sleep 30s
+assert connect {sip} mysql should succeed
+assert connect {slave} mysql should succeed
+
+set {slave} log checkpoint
+start {slave} ha service
+wait {slave} log "Node is running", timeout=1min
+
+get status
+assert status all ok
+assert {master} is master
+assert {slave} is slave
+
+rollback:

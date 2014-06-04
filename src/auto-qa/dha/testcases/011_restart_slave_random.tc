@@ -1,0 +1,24 @@
+prepare clean env
+
+var master slave
+
+stop {slave} ha service
+start {slave} ha service
+wait random time < 60s
+
+stop {slave} ha service
+start {slave} ha service
+wait random time < 60s
+
+stop {slave} ha service
+
+set {slave} log checkpoint
+start {slave} ha service
+wait {slave} log "Node is running", timeout=2min
+
+get status
+assert status all ok
+assert {master} is master
+assert {slave} is slave
+
+rollback:

@@ -1,0 +1,25 @@
+bug #660
+	break m-s replication by disable slave network
+	make data on master until its binlog dump thread die
+	resume slave network, slave should make m-s replication work again
+===
+
+prepare clean env
+
+var master slave
+var sip
+
+set {slave} log checkpoint
+bg disable {slave} network for 1min
+sysbench prepare {master} 10w data
+kill {master} mysql binlog dump process
+
+wait {slave} network resume, timeout=2min
+wait {slave} log "Node is running", timeout=3min
+
+wait {slave} mysql data catch up with {master}, timeout=3min
+assert {slave} sysbench has 10w data
+
+rollback:
+drop {sip} sysbench data
+wait {slave} mysql data catch up with {master}, timeout=3min

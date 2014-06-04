@@ -1,0 +1,21 @@
+prepare clean env
+
+var master slave
+
+clean {slave} unstable count
+
+set {slave} log checkpoint
+stop {slave} mysql service
+
+wait {slave} log "Target service reports (it|master-slave) is unavailable", timeout=1min
+wait {slave} log "Node is running", timeout=1min
+
+#wait slave connect
+sleep 5s
+
+get status
+assert status all ok
+assert {master} is master
+assert {slave} is slave
+
+rollback:
